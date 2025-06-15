@@ -2,14 +2,21 @@ import type { TData } from "./Home";
 
 type propsData = {
   setSearch: (value: string) => void;
+  setTextFa: (value: boolean) => void;
   fullData: TData | null;
 };
-const Weekly = ({ setSearch, fullData }: propsData) => {
+const Weekly = ({ setSearch, fullData, setTextFa }: propsData) => {
   console.log(fullData);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       setSearch(e.currentTarget.value);
+    }
+
+    if (/[\u0600-\u06FF]/.test(e.currentTarget.value)) {
+      setTextFa(true);
+    } else {
+      setTextFa(false);
     }
   };
 
