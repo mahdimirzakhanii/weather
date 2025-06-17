@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import CurrentWeather from "./CurrentWeather";
-import Weekly from "./Weekly";
+import Search from "./Search";
 import axios from "axios";
 import { Slide, toast, ToastContainer } from "react-toastify";
 
@@ -96,39 +96,43 @@ const Home = () => {
 
     getData();
   }, [location, search, textFa]);
+
+  console.log(fullData);
+
   return (
     <div
-      className={`text-white bg-cover  bg-no-repeat bg-center min-h-screen h-screen flex items-center justify-around
+      className={`text-white bg-cover bg-no-repeat bg-center min-h-screen h-screen flex flex-col pl-10 items-start justify-around 
       ${
         fullData?.weather[0]?.main === "Thunderstorm"
-          ? " bg-[url(/rainy-2.jpg)]"
+          ? " bg-[url(/rainy.jpg)]"
           : fullData?.weather[0]?.main === "Drizzle"
-          ? " bg-[url(/rainy-2.jpg)]"
+          ? " bg-[url(/rainy.jpg)]"
           : fullData?.weather[0]?.main === "Rain"
-          ? " bg-[url(/rainy-2.jpg)]"
+          ? " bg-[url(/rainy.jpg)]"
           : fullData?.weather[0]?.main === "Snow"
-          ? " bg-[url(/snow.jpg)]"
+          ? " bg-[url(/snow.jpeg)]"
           : fullData?.weather[0]?.main === "Clear"
-          ? " bg-[url(/sunny-4.jpg)]"
+          ? " bg-[url(/sunny.jpg)]"
           : fullData?.weather[0]?.main === "Clouds"
-          ? " bg-[url(/cloudy-1.jpg)]"
-          : fullData?.weather[0]?.main === "Mist" && " bg-[url(/rainy-2.jpg)]"
+          ? " bg-[url(/cloudy.jpg)]"
+          : fullData?.weather[0]?.main === "Mist" && " bg-[url(/mist.jpg)]"
       }`}
     >
-      {/* <span>
-        {"https://openweathermap.org/img/wn/" +
-          fullData?.weather[0]?.icon +
-          "@2x.png"}
-      </span> */}
-      <div className="basis-[20%]">
-        <CurrentWeather fullData={fullData} />
-      </div>
-      <div className="basis-[40%] ">
-        <Weekly
-          setTextFa={setTextFa}
-          setSearch={setSearch}
-          fullData={fullData}
-        />
+      <div
+        className="flex flex-col items-center justify-center w-1/3 h-[70vh]
+     bg-white-100 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100
+"
+      >
+        <div className="w-full z-50">
+          <Search
+            setTextFa={setTextFa}
+            setSearch={setSearch}
+            fullData={fullData}
+          />
+        </div>
+        <div className="w-full z-50">
+          <CurrentWeather fullData={fullData} />
+        </div>
       </div>
       <ToastContainer
         position="top-center"

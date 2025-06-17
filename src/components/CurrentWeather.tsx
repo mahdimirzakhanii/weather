@@ -13,15 +13,16 @@ const CurrentWeather = ({ fullData }: propsData) => {
   });
 
   return (
-    <div className="flex flex-col gap-3 items-start justify-center w-full">
+    <div className="flex flex-col gap-3 items-center justify-center w-full">
       <span className="flex items-start text-9xl ">
         {fullData?.main?.temp.toString().slice(0, 2)}
         <span className="text-3xl">°C</span>
       </span>
       <span className="text-6xl font-bold">{fullData?.name}</span>
-      <div className="flex justify-start w-full">
+      <div className="flex justify-center w-full">
         <span className="text-2xl">{time}</span>
       </div>
+      <span className="text-2xl">{fullData?.weather[0]?.description}</span>
     </div>
   );
 };
