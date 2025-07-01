@@ -1,5 +1,6 @@
 import type { Location } from "../Home";
 import Deatails from "./Deatails";
+import Forecast from "./Forecast";
 import SearchBox from "./SearchBox";
 
 type Props = {
@@ -20,7 +21,8 @@ const MainRightBox = ({
   return (
     <div className="flex flex-col items-center gap-10 justify-center w-full">
       <SearchBox setSearch={setSearch} setTextFa={setTextFa} />
-      <Deatails textFa={textFa} search={search} location={location} />
+      <Forecast textFa={textFa} search={search} location={location} />
+      <Deatails />
     </div>
   );
 };

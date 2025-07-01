@@ -105,7 +105,7 @@ const Home = () => {
           <CurrentWeather />
         </div>
 
-        <div className="w-1/2 z-50 bg-black/40 min-h-screen bg-clip-padding backdrop-filter backdrop-blur-sm ">
+        <div className="w-1/2 z-50 bg-black/40 min-h-screen bg-clip-padding backdrop-filter backdrop-blur-lg ">
           <MainRightBox
             search={search}
             location={location}

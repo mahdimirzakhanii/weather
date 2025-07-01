@@ -10,6 +10,7 @@ export type TData = {
   name: string;
   weather: IWeatherItems[];
   main: IMainItems;
+  dt_txt?: string;
 };
 
 interface IMainItems {
@@ -29,7 +30,7 @@ type IWeatherItems = {
 };
 
 type TDataContext = {
-  fullData: TData | null  ;
+  fullData: TData | null;
   setFullData: Dispatch<SetStateAction<TData | null>>;
 };
 
