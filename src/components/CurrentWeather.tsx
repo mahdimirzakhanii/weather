@@ -1,28 +1,25 @@
-import type { TData } from "./Home";
+import useDataContext from "../context/context";
 
-interface propsData {
-  fullData: TData | null;
-}
-
-const CurrentWeather = ({ fullData }: propsData) => {
+const CurrentWeather = () => {
+  const { fullData } = useDataContext();
   const date = new Date();
   const time = date.toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "numeric",
-    hour12: true,
+    hour12: false,
   });
 
   return (
-    <div className="flex flex-col gap-3 items-center justify-center w-full">
-      <span className="flex items-start text-9xl ">
+    <div className="flex flex-col gap-3 items-start justify-center w-full">
+      <span className="flex items-start font-bold text-9xl ">
         {fullData?.main?.temp.toString().slice(0, 2)}
         <span className="text-3xl">°C</span>
       </span>
-      <span className="text-6xl font-bold">{fullData?.name}</span>
-      <div className="flex justify-center w-full">
+      <div className="flex flex-col items-start gap-5 w-full">
+        <span className="text-6xl font-bold">{fullData?.name}</span>
         <span className="text-2xl">{time}</span>
+        <span className="text-2xl">{fullData?.weather[0]?.description}</span>
       </div>
-      <span className="text-2xl">{fullData?.weather[0]?.description}</span>
     </div>
   );
 };
