@@ -1,10 +1,5 @@
-import React, {
-  createContext,
-  useState,
-  Dispatch,
-  SetStateAction,
-  useContext,
-} from "react";
+import React, { createContext, useState, useContext } from "react";
+import type { Dispatch, SetStateAction } from "react";
 
 export type TData = {
   name: string;
