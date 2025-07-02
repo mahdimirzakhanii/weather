@@ -30,7 +30,7 @@ const SearchBox = ({ setSearch, setTextFa }: PropsSearch) => {
         onKeyDown={handleKeyDown}
         onChange={(e) => setSearchInput(e.target.value)}
         placeholder="Search"
-        className="text-lg border-b-2 border-b-white/50 duration-300 px-3 w-[70%] outline-0"
+        className="text-lg border-b border-b-white/20 duration-300 pb-1 px-3 w-[70%] outline-0"
       />
       <div className="flex items-center cursor-pointer bg-white/50 justify-center w-16 h-16">
         <PiMagnifyingGlass

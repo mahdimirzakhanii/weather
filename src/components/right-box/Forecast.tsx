@@ -60,7 +60,10 @@ const Forecast = ({ textFa, location, search }: Props) => {
                   hour12: false,
                 })}
             </span>
-            <span>{item?.main?.temp.toString().slice(0, 2)}</span>
+            <div className="flex items-center gap-1">
+              <span>{item?.main?.temp.toString().slice(0, 2)}</span>
+              <span className="text-lg">°</span>
+            </div>
           </div>
         ))}
       </div>

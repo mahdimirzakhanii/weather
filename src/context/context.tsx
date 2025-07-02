@@ -11,6 +11,7 @@ export type TData = {
   weather: IWeatherItems[];
   main: IMainItems;
   dt_txt?: string;
+  wind: Wind;
 };
 
 interface IMainItems {
@@ -18,11 +19,12 @@ interface IMainItems {
   feels_like: number;
   temp_min: number;
   temp_max: number;
-  pressure: number;
   humidity: number;
-  sea_level: number;
-  grnd_level: number;
 }
+interface Wind {
+  speed: number;
+}
+
 type IWeatherItems = {
   description: string;
   main: string;

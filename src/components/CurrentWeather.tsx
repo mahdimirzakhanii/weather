@@ -13,7 +13,7 @@ const CurrentWeather = () => {
     <div className="flex flex-col gap-3 items-start justify-center w-full">
       <span className="flex items-start font-bold text-9xl ">
         {fullData?.main?.temp.toString().slice(0, 2)}
-        <span className="text-3xl">°C</span>
+        <span className="text-7xl">°</span>
       </span>
       <div className="flex flex-col items-start gap-5 w-full">
         <span className="text-6xl font-bold">{fullData?.name}</span>
