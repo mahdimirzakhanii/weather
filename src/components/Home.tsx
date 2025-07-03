@@ -4,6 +4,7 @@ import CurrentWeather from "./CurrentWeather";
 import axios from "axios";
 import MainRightBox from "./right-box/MainRightBox";
 import useDataContext from "../context/context";
+import Loading from "./Loading";
 
 export interface Location {
   latitude: number;
@@ -18,15 +19,15 @@ const Home = () => {
   const [location, setLocation] = useState<Location | null>(null);
 
   useEffect(() => {
-    console.log("درخواست لوکیشن در حال ارسال است...");
+    console.log("Getting your location... 🔍");
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        console.log("لوکیشن دریافت شد");
+        console.log("Location found 🎉");
         setLocation(position.coords);
       },
       (error) => {
-        console.error("خطا در گرفتن موقعیت جغرافیایی:", error);
-        toast.error("خطا در گرفتن موقعیت جغرافیایی!", {
+        console.error("Failed to get location", error);
+        toast.error("Failed to get location", {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: true,
@@ -34,7 +35,7 @@ const Home = () => {
           pauseOnHover: false,
           draggable: true,
           progress: undefined,
-          rtl: true,
+          rtl: false,
           theme: "dark",
           transition: Slide,
         });
@@ -71,9 +72,11 @@ const Home = () => {
       }
     };
     getData();
-  }, [location, search, textFa]);
+  }, [location, search, textFa, setFullData]);
 
-  return (
+  return fullData === null ? (
+    <Loading />
+  ) : (
     <div
       className={`text-white bg-cover bg-no-repeat bg-center min-h-screen h-screen flex items-start justify-around 
       ${
@@ -115,7 +118,6 @@ const Home = () => {
           />
         </div>
       </div>
-
       <ToastContainer
         position="top-center"
         autoClose={5000}
