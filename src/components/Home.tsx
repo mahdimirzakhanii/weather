@@ -26,7 +26,7 @@ const Home = () => {
         setLocation(position.coords);
       },
       (error) => {
-        console.error("Failed to get location", error);
+        console.error(error);
         toast.error("Failed to get location", {
           position: "top-center",
           autoClose: 5000,
@@ -69,16 +69,30 @@ const Home = () => {
         setFullData(res?.data);
       } catch (error) {
         console.log(error);
+        toast.error("Not Found !", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          rtl: false,
+          theme: "dark",
+          transition: Slide,
+        });
       }
     };
     getData();
   }, [location, search, textFa, setFullData]);
 
-  return fullData === null ? (
-    <Loading />
-  ) : (
-    <div
-      className={`text-white bg-cover bg-no-repeat bg-center min-h-screen h-screen flex items-start justify-around 
+  return (
+    <>
+      {fullData === null ? (
+        <Loading />
+      ) : (
+        <div
+          className={`text-gray-200 bg-cover bg-no-repeat bg-center min-h-screen h-screen flex items-start justify-around 
       ${
         fullData?.weather[0]?.main === "Thunderstorm"
           ? " bg-[url(/rainy.jpg)]"
@@ -100,24 +114,27 @@ const Home = () => {
               fullData?.weather[0]?.main === "Sand" ||
               fullData?.weather[0]?.main === "Tornado") &&
             " bg-[url(/dust.jpg)]"
-      }
-      `}
-    >
-      <div className="flex items-center justify-between w-full ">
-        <div className="w-full pl-20 z-50">
-          <CurrentWeather />
-        </div>
+      }`}
+        >
+          <div className="w-full h-full bg-gradient-to-tr from-black/70 to-transparent absolute"></div>
+          <div className="flex gap-5 md:gap-0 items-center justify-between flex-col md:flex-row w-full ">
+            <div className="w-full md:pl-20 z-50">
+              <CurrentWeather />
+            </div>
 
-        <div className="w-1/2 z-50 bg-black/40 min-h-screen bg-clip-padding backdrop-filter backdrop-blur-lg ">
-          <MainRightBox
-            search={search}
-            location={location}
-            textFa={textFa}
-            setSearch={setSearch}
-            setTextFa={setTextFa}
-          />
+            <div className="w-[90%] md:w-1/2 z-50 pb-10 md:pb-0 bg-black/40 min-h-full md:min-h-screen bg-clip-padding backdrop-filter backdrop-blur-lg ">
+              <MainRightBox
+                search={search}
+                location={location}
+                textFa={textFa}
+                setSearch={setSearch}
+                setTextFa={setTextFa}
+              />
+            </div>
+          </div>
         </div>
-      </div>
+      )}
+
       <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -131,7 +148,7 @@ const Home = () => {
         theme="dark"
         transition={Slide}
       />
-    </div>
+    </>
   );
 };
 

@@ -19,7 +19,7 @@ const MainRightBox = ({
   setTextFa,
 }: Props) => {
   return (
-    <div className="flex flex-col items-center gap-10 justify-center w-full">
+    <div className="flex flex-col items-center gap-5 md:gap-10 justify-center w-full">
       <SearchBox setSearch={setSearch} setTextFa={setTextFa} />
       <Deatails />
       <Forecast textFa={textFa} search={search} location={location} />

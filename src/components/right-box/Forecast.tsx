@@ -48,8 +48,8 @@ const Forecast = ({ textFa, location, search }: Props) => {
   const slice = deatailsData?.list?.slice(0, 5);
 
   return (
-    <div className="flex flex-col items-center gap-5 px-5 w-full">
-      <div className="flex flex-col items-center justify-between gap-5 w-full">
+    <div className="flex flex-col items-center px-5 w-full">
+      <div className="flex flex-col items-center justify-between gap-2 md:gap-5 w-full">
         {slice?.map((item) => (
           <div className="flex  items-center justify-between w-full">
             <span className="text-white/60">
@@ -60,7 +60,7 @@ const Forecast = ({ textFa, location, search }: Props) => {
                   hour12: false,
                 })}
             </span>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center">
               <span>{item?.main?.temp.toString().slice(0, 2)}</span>
               <span className="text-lg">°</span>
             </div>
