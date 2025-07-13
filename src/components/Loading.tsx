@@ -4,10 +4,10 @@ const Loading = () => {
       <img src="/wired-gradient-18-location-pin-hover-jump.gif" width={500} />
       <div className="flex flex-col gap-5 items-start  w-1/2">
         <div className="flex items-center gap-3">
-          <span className="text-6xl w-fit min-h-[100px] flex items-center justify-center font-serif bg-gradient-to-r from-[#e83a30] to-[#1663c7] text-transparent bg-clip-text">
+          <span className="text-6xl w-fit min-h-[100px] flex items-center justify-center font-serif bg-gradient-to-r from-[#f00c00] to-[#2202a4] text-transparent bg-clip-text">
             Getting Your Location...
           </span>
-          <span className="text-5xl font-serif text-[#1663c7]">!</span>
+          <span className="text-5xl font-serif text-[#2202a4]">!</span>
         </div>
         <div className="flex items-center w-full">
           <button

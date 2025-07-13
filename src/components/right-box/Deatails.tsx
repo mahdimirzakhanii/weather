@@ -9,7 +9,7 @@ const Deatails = () => {
         <div className="flex items-center gap-1">
           <span>
             {fullData?.main?.feels_like &&
-              Math.floor(fullData?.main?.feels_like)}
+              Math.trunc(fullData?.main?.feels_like)}
           </span>
           <span className="text-lg">°</span>
         </div>
@@ -19,7 +19,7 @@ const Deatails = () => {
         <span className="text-white/60">Humidity</span>
         <div className="flex items-center gap-1">
           <span>
-            {fullData?.main?.humidity && Math.floor(fullData?.main?.humidity)}
+            {fullData?.main?.humidity && Math.trunc(fullData?.main?.humidity)}
           </span>
           <span className="text-lg">%</span>
         </div>
@@ -29,7 +29,7 @@ const Deatails = () => {
         <span className="text-white/60">Wind Speed</span>
         <div className="flex items-center gap-1">
           <span>
-            {fullData?.wind?.speed && Math.floor(fullData?.wind?.speed)}
+            {fullData?.wind?.speed && Math.trunc(fullData?.wind?.speed)}
           </span>
           <span className="text-lg">km/h</span>
         </div>
@@ -39,7 +39,7 @@ const Deatails = () => {
         <span className="text-white/60">Temp Min</span>
         <div className="flex items-center gap-1">
           <span>
-            {fullData?.main?.temp_min && Math.floor(fullData?.main?.temp_min)}
+            {fullData?.main?.temp_min && Math.trunc(fullData?.main?.temp_min)}
           </span>
           <span className="text-lg">°</span>
         </div>
@@ -49,7 +49,7 @@ const Deatails = () => {
         <span className="text-white/60">Temp Max</span>
         <div className="flex items-center gap-1">
           <span>
-            {fullData?.main?.temp_max && Math.floor(fullData?.main?.temp_max)}
+            {fullData?.main?.temp_max && Math.trunc(fullData?.main?.temp_max)}
           </span>
           <span className="text-lg">°</span>
         </div>
