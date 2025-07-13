@@ -7,7 +7,10 @@ const Deatails = () => {
       <div className="flex items-center justify-between w-full">
         <span className="text-white/60">Feels Like</span>
         <div className="flex items-center gap-1">
-          <span>{fullData?.main?.feels_like?.toString()?.slice(0, 2)}</span>
+          <span>
+            {fullData?.main?.feels_like &&
+              Math.floor(fullData?.main?.feels_like)}
+          </span>
           <span className="text-lg">°</span>
         </div>
       </div>
@@ -15,7 +18,9 @@ const Deatails = () => {
       <div className="flex items-center justify-between w-full">
         <span className="text-white/60">Humidity</span>
         <div className="flex items-center gap-1">
-          <span>{fullData?.main?.humidity?.toString()?.slice(0, 2)}</span>
+          <span>
+            {fullData?.main?.humidity && Math.floor(fullData?.main?.humidity)}
+          </span>
           <span className="text-lg">%</span>
         </div>
       </div>
@@ -23,7 +28,9 @@ const Deatails = () => {
       <div className="flex items-center justify-between w-full">
         <span className="text-white/60">Wind Speed</span>
         <div className="flex items-center gap-1">
-          <span>{fullData?.wind?.speed?.toString()?.slice(0, 2)}</span>
+          <span>
+            {fullData?.wind?.speed && Math.floor(fullData?.wind?.speed)}
+          </span>
           <span className="text-lg">km/h</span>
         </div>
       </div>
@@ -31,7 +38,9 @@ const Deatails = () => {
       <div className="flex items-center justify-between w-full">
         <span className="text-white/60">Temp Min</span>
         <div className="flex items-center gap-1">
-          <span>{fullData?.main?.temp_min?.toString()?.slice(0, 2)}</span>
+          <span>
+            {fullData?.main?.temp_min && Math.floor(fullData?.main?.temp_min)}
+          </span>
           <span className="text-lg">°</span>
         </div>
       </div>
@@ -39,7 +48,9 @@ const Deatails = () => {
       <div className="flex items-center justify-between w-full">
         <span className="text-white/60">Temp Max</span>
         <div className="flex items-center gap-1">
-          <span>{fullData?.main?.temp_max?.toString()?.slice(0, 2)}</span>
+          <span>
+            {fullData?.main?.temp_max && Math.floor(fullData?.main?.temp_max)}
+          </span>
           <span className="text-lg">°</span>
         </div>
       </div>

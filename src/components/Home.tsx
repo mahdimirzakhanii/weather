@@ -5,6 +5,7 @@ import axios from "axios";
 import MainRightBox from "./right-box/MainRightBox";
 import useDataContext from "../context/context";
 import Loading from "./Loading";
+import ManualSearch from "./ManualSearch";
 
 export interface Location {
   latitude: number;
@@ -17,9 +18,12 @@ const Home = () => {
   const [search, setSearch] = useState<string>("");
   const [textFa, setTextFa] = useState<boolean>(true);
   const [location, setLocation] = useState<Location | null>(null);
+  // const [showManualSearch, setShowManualSearch] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     console.log("Getting your location... 🔍");
+    setLoading(true);
     navigator.geolocation.getCurrentPosition(
       (position) => {
         console.log("Location found 🎉");
@@ -27,6 +31,8 @@ const Home = () => {
       },
       (error) => {
         console.error(error);
+        // setShowManualSearch(true);
+        setLoading(false);
         toast.error("Failed to get location", {
           position: "top-center",
           autoClose: 5000,
@@ -50,7 +56,7 @@ const Home = () => {
 
   useEffect(() => {
     const getData = async () => {
-      if (!location) return;
+      if (!location && !search) return;
       try {
         const res = await axios.get(
           search
@@ -88,8 +94,10 @@ const Home = () => {
 
   return (
     <>
-      {fullData === null ? (
+      {loading && !search && !location ? (
         <Loading />
+      ) : !location && !search ? (
+        <ManualSearch setSearch={setSearch} setTextFa={setTextFa} />
       ) : (
         <div
           className={`text-gray-200 bg-cover bg-no-repeat bg-center min-h-screen h-screen flex items-start justify-around 
@@ -134,7 +142,6 @@ const Home = () => {
           </div>
         </div>
       )}
-
       <ToastContainer
         position="top-center"
         autoClose={5000}

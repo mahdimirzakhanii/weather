@@ -50,8 +50,11 @@ const Forecast = ({ textFa, location, search }: Props) => {
   return (
     <div className="flex flex-col items-center px-5 w-full">
       <div className="flex flex-col items-center justify-between gap-2 md:gap-5 w-full">
-        {slice?.map((item) => (
-          <div className="flex  items-center justify-between w-full">
+        {slice?.map((item, index) => (
+          <div
+            key={index}
+            className="flex  items-center justify-between w-full"
+          >
             <span className="text-white/60">
               {item?.dt_txt &&
                 new Date(item.dt_txt).toLocaleTimeString("en-US", {
