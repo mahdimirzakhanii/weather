@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { PiMagnifyingGlass } from "react-icons/pi";
 
 type Props = {
@@ -7,7 +6,6 @@ type Props = {
 };
 
 const ManualSearch = ({ setSearch, setTextFa }: Props) => {
-  const [searchInput, setSearchInput] = useState("");
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -26,7 +24,6 @@ const ManualSearch = ({ setSearch, setTextFa }: Props) => {
       <input
         type="text"
         onKeyDown={handleKeyDown}
-        onChange={(e) => setSearchInput(e.target.value)}
         placeholder="Search Location"
         className="text-lg border border-gray-200 text-gray-600 shadow-xl focus:shadow-sm duration-500 rounded-md py-2 px-3 w-full outline-0"
       />
