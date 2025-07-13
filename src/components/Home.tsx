@@ -60,14 +60,14 @@ const Home = () => {
       try {
         const res = await axios.get(
           search
-            ? `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=b0929da981a188d7739b38288dbfe378${
+            ? `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=b0929da981a188d7739b38288dbfe378&units=metric${
                 textFa ? "&lang=fa" : "&lang=en"
               }`
             : `https://api.openweathermap.org/data/2.5/weather?lat=${
                 location?.latitude
               }&lon=${
                 location?.longitude
-              }&appid=b0929da981a188d7739b38288dbfe378${
+              }&appid=b0929da981a188d7739b38288dbfe378&units=metric${
                 textFa ? "&lang=fa" : "&lang=en"
               }`
         );
@@ -115,10 +115,10 @@ const Home = () => {
           : fullData?.weather[0]?.main === "Clouds"
           ? " bg-[url(/cloudy.jpg)]"
           : fullData?.weather[0]?.main === "Mist" ||
-            fullData?.weather[0]?.main === "Haze" ||
             fullData?.weather[0]?.main === "Fog"
           ? " bg-[url(/mist.jpg)]"
           : (fullData?.weather[0]?.main === "Dust" ||
+              fullData?.weather[0]?.main === "Haze" ||
               fullData?.weather[0]?.main === "Sand" ||
               fullData?.weather[0]?.main === "Tornado") &&
             " bg-[url(/dust.jpg)]"
